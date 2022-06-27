@@ -1,0 +1,20 @@
+name: Configuring telepresence
+  on: workflow_dispatch
+  jobs:
+    configuring:
+      name: Configure telepresence
+      runs-on: ubuntu-latest
+      env:
+        TELEPRESENCE_API_KEY: ${{ secrets.TELEPRESENCE_API_KEY }}
+      steps:
+        - name : Checkout
+          uses: actions/checkout@v3
+        #---- here run your custom command to connect to your cluster
+        #- name: Connect to cluster
+        #  shell: bash
+        #  run: ./connnect to cluster
+        #----
+        - name: Congifuring Telepresence
+          uses: datawire/telepresence-actions/configure@v1.0-rc
+          with:
+            version: latest
